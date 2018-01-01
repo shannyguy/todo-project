@@ -5,10 +5,9 @@
 	</listeners>
 	<test name="All Tests">
 		<classes>
-			<!-- <class name="myTodoProject.tests.AddRemoveToDoItemTest" />
+			<class name="myTodoProject.tests.AddRemoveToDoItemTest" />
 			<class name="myTodoProject.tests.MarkAsCompleteTest" />
-			<class name="myTodoProject.tests.ClearCompletedTest" /> -->
-			<class name="myTodoProject.tests.EditItemTest" />
+			<class name="myTodoProject.tests.ClearCompletedTest" /> 
 		</classes>
 	</test>
 </suite>
