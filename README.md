@@ -12,7 +12,7 @@ In order to utilize this project you need to have the following installed locall
 
 ## Running the tests
 
-TestNG is the framework used for running the tests.
+TestNG is the framework used for running the tests. Make sure TestNG plug-in is installed on your IDE. 
 Configure TestNG to run the following suite: src/main/resources/testNGSuites/mySuite.xml (Run-> Run Configurations...)
 
 ### Tests cases
