@@ -4,6 +4,7 @@ package myTodoProject.infra.testManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -30,8 +31,7 @@ public class TestBasic {
 		webDriver = driverManager.getDriver().get();
 		ExtentManager.webDriver = webDriver;
 		WebElementActions.webDriver = webDriver;
-		initPages();
-		Pages.todoPage.navigateTo(GlobalParameters.MAIN_PAGE);
+		init();
 	}
 	
 	/**
@@ -39,7 +39,6 @@ public class TestBasic {
 	 */
 	@BeforeClass(alwaysRun = true)
 	public void initTest() {
-		init();	
 	}
 
 	/**
@@ -47,12 +46,11 @@ public class TestBasic {
 	 */
 	@BeforeMethod(alwaysRun = true)
 	public void initMethod() {
-		init();	
 	}
 	
 	
 	/**
-	 * This method stops the driver
+	 * This method stops the driver when suite execution is complete
 	 */
 	@AfterSuite(alwaysRun = true)
 	public void afterSuite()
@@ -62,6 +60,11 @@ public class TestBasic {
 	private void initPages(){
 		Pages.initPages();
 	}
+	
+	@AfterMethod
+	public void cleanUp(){
+		removeTodoItems();
+	}
 
 	public void startStep(String testCaseName, String testCaseDesc)
 	{
@@ -70,6 +73,12 @@ public class TestBasic {
 	}
 	
 	private void init(){
+		initPages();
+		Pages.mainPage.navigateTo();
+		Pages.mainPage.todoAngularLink.click();
+	}
+	
+	private void removeTodoItems(){
 		ToDoPage todoPage = Pages.todoPage;
 		if(Pages.todoPage.toggleAllButton.isVisible()){
 			if(!todoPage.clearCompletedButton.isVisible()){

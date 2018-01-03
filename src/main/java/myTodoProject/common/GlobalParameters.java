@@ -17,5 +17,4 @@ public class GlobalParameters {
 	public static String SELENIUM_BROSWER;
 	public static String SELENIUM_IS_ENABLED_LOGGING;
 	public static String SELENIUM_CHROME_DRIVER_PATH;
-	public static String MAIN_PAGE;
 }
